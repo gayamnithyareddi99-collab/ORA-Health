@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORAÉ Health | AI-Powered Haircare Intelligence</title>
+
+<style>
+:root{
+  --dark:#0f172a;
+  --gold:#d4a373;
+  --skin:#f5ebe0;
+  --text:#6b4f3f;
+  --white:#ffffff;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  font-family: "Arial", sans-serif;
+  background:var(--white);
+  color:var(--text);
+  line-height:1.7;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  background:#ffffff;
+  padding:16px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #eee;
+  z-index:999;
+}
+
+nav h1{
+  font-size:20px;
+  color:var(--dark);
+  letter-spacing:1px;
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--dark);
+  font-weight:600;
+  margin-left:24px;
+}
+
+/* HERO */
+.hero{
+  padding:140px 8% 100px;
+  background:linear-gradient(180deg,#ffffff,var(--skin));
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:60px;
+  align-items:center;
+}
+
+.hero h2{
+  font-size:46px;
+  color:var(--dark);
+  margin-bottom:20px;
+}
+
+.hero h2 span{color:var(--gold);}
+
+.hero p{
+  font-size:18px;
+  max-width:560px;
+}
+
+.hero button{
+  margin-top:30px;
+  padding:14px 38px;
+  border:none;
+  border-radius:999px;
+  background:var(--dark);
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* HERO IMAGE */
+.hero img{
+  width:100%;
+  border-radius:24px;
+  box-shadow:0 30px 60px rgba(0,0,0,0.2);
+}
+
+/* SECTION BASE */
+section{
+  padding:110px 8%;
+}
+
+section h3{
+  font-size:36px;
+  color:var(--dark);
+  margin-bottom:20px;
+}
+
+.center{
+  max-width:820px;
+  margin-bottom:60px;
+  font-size:18px;
+}
+
+/* ABOUT */
+.about p{
+  max-width:900px;
+  margin-bottom:22px;
+}
+
+/* HOW IT WORKS */
+.steps{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:40px;
+}
+
+.step h4{
+  font-size:20px;
+  color:var(--dark);
+  margin-bottom:10px;
+}
+
+/* FEATURES */
+.features{
+  background:var(--skin);
+}
+
+.feature-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px;
+}
+
+.feature-list li{
+  list-style:none;
+  font-size:16px;
+}
+
+/* AI SECTION */
+.ai{
+  background:linear-gradient(180deg,var(--dark),#020617);
+  color:white;
+}
+
+.ai h3{color:white;}
+
+.ai p{max-width:800px;color:#e5e7eb;}
+
+/* CONTACT */
+.contact{
+  text-align:center;
+}
+
+.contact a{
+  display:inline-block;
+  margin-top:20px;
+  padding:16px 46px;
+  background:var(--gold);
+  color:#000;
+  font-weight:bold;
+  border-radius:999px;
+  text-decoration:none;
+}
+
+/* FOOTER */
+footer{
+  background:#020617;
+  color:#cbd5f5;
+  text-align:center;
+  padding:24px;
+  font-size:14px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+  .hero h2{font-size:34px;}
+}
+/* ======================
+   ORAÉ NAVBAR
+   ====================== */
+
+.orae-nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:70px;
+  padding:0 8%;
+  background:#ffffff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #eee;
+  z-index:9999;
+}
+
+/* LOGO */
+.nav-logo{
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:1px;
+  color:#1a1411;
+}
+
+/* MENU */
+.nav-menu{
+  list-style:none;
+  display:flex;
+  gap:28px;
+}
+
+.nav-menu li a{
+  text-decoration:none;
+  color:#1a1411;
+  font-weight:600;
+  font-size:15px;
+  position:relative;
+  padding-bottom:4px;
+}
+
+/* UNDERLINE EFFECT */
+.nav-menu li a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0%;
+  height:2px;
+  background:#d4a373;
+  transition:0.3s ease;
+}
+
+.nav-menu li a:hover::after{
+  width:100%;
+}
+
+/* HAMBURGER */
+.nav-toggle{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+}
+
+.nav-toggle span{
+  width:26px;
+  height:3px;
+  background:#1a1411;
+  margin:4px 0;
+  border-radius:2px;
+}
+
+/* ======================
+   MOBILE
+   ====================== */
+@media(max-width:900px){
+
+  .nav-toggle{
+    display:flex;
+  }
+
+  .nav-menu{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#ffffff;
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+    display:none;
+    border-bottom:1px solid #eee;
+  }
+
+  .nav-menu li{
+    width:100%;
+    text-align:center;
+    border-top:1px solid #f0f0f0;
+  }
+
+  .nav-menu li a{
+    display:block;
+    padding:16px 0;
+  }
+
+  .nav-menu.show{
+    display:flex;
+  }
+}
+
+</style>
+<script>
+/* TOGGLE MOBILE MENU */
+const toggle = document.getElementById("navToggle");
+const menu = document.getElementById("navMenu");
+
+toggle.addEventListener("click", ()=>{
+  menu.classList.toggle("show");
+});
+
+/* SMOOTH SCROLL + CLOSE MENU */
+document.querySelectorAll(".nav-menu a").forEach(link=>{
+  link.addEventListener("click", e=>{
+    e.preventDefault();
+    menu.classList.remove("show");
+
+    const target = document.querySelector(link.getAttribute("href"));
+    target.scrollIntoView({ behavior:"smooth" });
+  });
+});
+</script>
+
+</head>
+
+
+<body>
+
+<nav class="orae-nav">
+  <div class="nav-logo">ORAÉ Health</div>
+
+  <!-- HAMBURGER -->
+  <div class="nav-toggle" id="navToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- MENU -->
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about-orae">About</a></li>
+    <li><a href="#how-orae">How It Works</a></li>
+    <li><a href="#features-orae-flow">Features</a></li>
+    <li><a href="#ai-orae">AI-orae</a></li>
+    <li><a href="#contact-orae-soft">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- 1️⃣ HERO -->
+<section class="hero" id="hero">
+
+  <div>
+    <h2>Personalised Haircare,<br><span>Powered by AI</span></h2>
+    <p>
+      ORAÉ Health is an intelligent haircare platform that blends
+      AI, cultural insight, and professional expertise to deliver
+      personalised hair solutions for textured hair.
+    </p>
+    <button>Request Early Access</button>
+  </div>
+
+  <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb" alt="Healthy hair">
+</section>
+
+<!-- ABOUT ORAÉ -->
+<section id="about-orae">
+
+  <style>
+    #about-orae{
+      padding:120px 8%;
+      background:#fffaf6;
+      font-family:Arial, Helvetica, sans-serif;
+      color:#3a2f2a;
+    }
+
+    .about-container{
+      max-width:980px;
+      margin:auto;
+    }
+
+    .about-container h2{
+      font-size:42px;
+      text-align:center;
+      margin-bottom:26px;
+      color:#1f2937;
+      letter-spacing:0.4px;
+    }
+
+    .about-intro{
+      text-align:center;
+      font-size:19px;
+      line-height:1.8;
+      max-width:760px;
+      margin:0 auto 70px;
+      color:#5a463d;
+    }
+
+    .about-container p{
+      font-size:18px;
+      line-height:1.9;
+      margin-bottom:28px;
+      color:#2e2a27;
+    }
+
+    .about-container strong{
+      color:#1f2937;
+      font-weight:700;
+    }
+    
+
+    /* CENTER FOUNDER BLOCK */
+    .founder-center{
+      text-align:center;
+      font-size:18px;
+      line-height:1.85;
+      color:#4b3a33;
+      max-width:820px;
+      margin:70px auto;
+      padding:0 10px;
+      font-style:italic;
+    }
+
+    .founder-center strong{
+      font-style:normal;
+      color:#1f2937;
+    }
+
+    /* SOFT DIVIDER */
+    .soft-divider{
+      height:1px;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        #d4a373,
+        transparent
+      );
+      margin:70px 0;
+    }
+
+    @media(max-width:768px){
+      #about-orae{
+        padding:90px 6%;
+      }
+
+      .about-container h2{
+        font-size:32px;
+      }
+
+      .about-container p,
+      .founder-center{
+        font-size:17px;
+      }
+    }
+  </style>
+
+  <div class="about-container">
+
+    <h2>About ORAÉ</h2>
+
+    <p class="about-intro">
+      ORAÉ Health is redefining personalised haircare by combining
+      professional expertise, cultural understanding, and intelligent technology.
+    </p>
+
+    <p>
+      Haircare guidance today is often generic and disconnected from real
+      lived experience. Many individuals struggle with product damage,
+      inconsistent routines, and advice that does not reflect their hair
+      type, lifestyle, or cultural needs.
+    </p>
+
+    <p>
+      <strong>ORAÉ was created to change this.</strong> Built on real salon
+      knowledge and supported by data-driven intelligence, ORAÉ helps users
+      understand their hair health, avoid unnecessary damage, and follow
+      routines that are tailored to them not trends.
+    </p>
+
+    <!-- FOUNDER IN THE MIDDLE -->
+    <div class="soft-divider"></div>
+
+    <p class="founder-center">
+      ORAÉ Health was founded by <strong>Tumininu</strong>, bringing together
+      professional haircare insight and a deep understanding of cultural hair
+      needs. ORAÉ exists to empower individuals with clarity, confidence,
+      and intelligent guidance they can trust throughout their haircare journey.
+    </p>
+
+</section>
+
+
+<!-- HOW IT WORKS : ORAÉ -->
+<section id="how-orae">
+
+  <style>
+    #how-orae{
+      padding:120px 8%;
+      background:#614b44; /* deep skin-dark background */
+      font-family:Arial, Helvetica, sans-serif;
+      color:#f5e9dc;
+    }
+
+    #how-orae h3{
+      text-align:center;
+      font-size:42px;
+      margin-bottom:70px;
+      color:#f6e7db;
+      letter-spacing:0.4px;
+    }
+
+    /* GRID */
+    .how-grid{
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:40px;
+    }
+
+    /* CARD */
+    .how-card{
+      background:#f5ebe0; /* skin dark brown */
+      border-radius:28px;
+      padding:38px 30px 42px;
+      text-align:center;
+      position:relative;
+      border:1px solid rgba(212, 163, 115, 0.25);
+      transition:0.45s ease;
+      cursor:pointer;
+      overflow:hidden;
+    }
+
+    /* ROUND IMAGE */
+    .how-card img{
+      width:90px;
+      height:90px;
+      object-fit:cover;
+      border-radius:50%;
+      border:3px solid #f5ebe0;
+      margin-bottom:22px;
+      background:#fffaf6;
+    }
+
+    .how-card h4{
+      font-size:20px;
+      margin-bottom:14px;
+      color:#0f0b05;
+    }
+
+    .how-card p{
+      font-size:16px;
+      line-height:1.7;
+      color:#000000;
+      margin:0;
+    }
+
+    /* SOFT GLOW LAYER */
+    .how-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(
+        circle at top,
+        rgba(204, 160, 117, 0.35),
+        transparent 70%
+      );
+      opacity:0;
+      transition:0.45s ease;
+    }
+
+  /* HOVER / TOUCH EFFECT – ORAÉ PREMIUM */
+.how-card:hover{
+  background:#1a1411; /* deep charcoal brown */
+  transform:translateY(-10px);
+  box-shadow:
+    0 28px 60px rgba(0,0,0,0.65),
+    0 0 40px rgba(212,163,115,0.55); /* warm skin glow */
+  border-color:#d4a373;
+}
+
+
+    .how-card:hover::before{
+      opacity:1;
+    }
+
+ .how-card:hover h4{
+  color:#f3e0c8; /* warm cream */
+}
+
+.how-card:hover p{
+  color:#e9d5c0;
+}
+.how-card:hover img{
+  border-color:#d4a373;
+  box-shadow:0 0 20px rgba(212,163,115,0.6);
+}
+
+    /* MOBILE */
+    @media(max-width:768px){
+      #how-orae{
+        padding:90px 6%;
+      }
+
+      #how-orae h3{
+        font-size:32px;
+      }
+    }
+  </style>
+
+  <h3>How ORAÉ Works</h3>
+
+  <div class="how-grid">
+
+    <div class="how-card">
+      <img src="image-1.jpg" alt="Hair analysis">
+      <h4>1. Hair Analysis</h4>
+      <p>Users share hair type, concerns, and lifestyle inputs.</p>
+    </div>
+
+    <div class="how-card">
+      <img src="image-2.jpg" alt="Texture scan">
+      <h4>2. Texture Understanding</h4>
+      <p>AI understands curl pattern, density, and strand behaviour.</p>
+    </div>
+
+    <div class="how-card">
+      <img src="image-3.jpg" alt="Health assessment">
+      <h4>3. Health Assessment</h4>
+      <p>Scalp health, breakage risk, and damage signals identified.</p>
+    </div>
+
+    <div class="how-card">
+      <img src="image-4.jpg" alt="AI processing">
+      <h4>4. AI Intelligence</h4>
+      <p>Models process data using salon-backed hair science.</p>
+    </div>
+
+    <div class="how-card">
+      <img src="image-5.jpg" alt="Personal routine">
+      <h4>5. Personal Routine</h4>
+      <p>Custom routines designed for real hair and real life.</p>
+    </div>
+
+    <div class="how-card">
+      <img src="image-6.jpg" alt="Product guidance">
+      <h4>6. Product Guidance</h4>
+      <p>Evidence-based product recommendations without guesswork.</p>
+    </div>
+
+    <div class="how-card">
+      <img src="image-7.jpg" alt="Progress tracking">
+      <h4>7. Progress Tracking</h4>
+      <p>Track improvements and adjust routines over time.</p>
+    </div>
+
+    <div class="how-card">
+      <img src="image-8.jpg" alt="Long term care">
+      <h4>8. Long-Term Care</h4>
+      <p>ORAÉ evolves with your hair as seasons and needs change.</p>
+    </div>
+    <div class="how-card">
+  <img src="image-9.jpg" alt="Community & education">
+  <h4>9. Education & Empowerment</h4>
+  <p>
+    Learn healthy hair practices, avoid damage myths,
+    and build long-term confidence through guided care.
+  </p>
+</div>
+
+
+  </div>
+
+</section>
+
+<script>
+/* OPTIONAL: touch support for mobile */
+document.querySelectorAll('.how-card').forEach(card=>{
+  card.addEventListener('touchstart',()=>{
+    card.classList.add('active');
+  });
+  card.addEventListener('touchend',()=>{
+    setTimeout(()=>card.classList.remove('active'),300);
+  });
+});
+</script>
+
+
+<!-- ORAÉ FEATURES : EDITORIAL MODEL -->
+<section id="features-orae-flow">
+
+  <style>
+    #features-orae-flow{
+      padding:120px 8%;
+      background:#fffaf6;
+      font-family:Arial, Helvetica, sans-serif;
+      color:#2b211c;
+    }
+
+    #features-orae-flow h3{
+      text-align:center;
+      font-size:42px;
+      margin-bottom:90px;
+      letter-spacing:0.4px;
+      color:#1f1a17;
+    }
+
+    .features-wrap{
+      max-width:900px;
+      margin:auto;
+    }
+
+    /* FEATURE ROW */
+    .feature-row{
+      padding:34px 0;
+      border-bottom:1px solid rgba(212,163,115,0.35);
+      transition:0.35s ease;
+      cursor:pointer;
+    }
+
+    .feature-row:last-child{
+      border-bottom:none;
+    }
+
+    .feature-row h4{
+      font-size:22px;
+      margin-bottom:10px;
+      font-weight:600;
+      color:#1a1411;
+    }
+
+    .feature-row p{
+      font-size:17px;
+      line-height:1.8;
+      color:#3a2c26;
+      margin:0;
+      max-width:760px;
+    }
+
+    /* HOVER EFFECT */
+    .feature-row:hover{
+      background:linear-gradient(
+        90deg,
+        rgba(212,163,115,0.12),
+        transparent
+      );
+      padding-left:20px;
+    }
+
+    .feature-row:hover h4{
+      color:#7a4a2f;
+    }
+
+    /* MOBILE */
+    @media(max-width:768px){
+      #features-orae-flow{
+        padding:90px 6%;
+      }
+
+      #features-orae-flow h3{
+        font-size:32px;
+        margin-bottom:60px;
+      }
+
+      .feature-row h4{
+        font-size:20px;
+      }
+
+      .feature-row p{
+        font-size:16px;
+      }
+    }
+  </style>
+
+  <h3>Platform Features</h3>
+
+  <div class="features-wrap">
+
+    <div class="feature-row">
+      <h4>AI-Powered Hair Diagnostics</h4>
+      <p>
+        Advanced analysis that understands hair texture, health,
+        breakage patterns, and long-term damage risks.
+      </p>
+    </div>
+
+    <div class="feature-row">
+      <h4>Personalised Routine Intelligence</h4>
+      <p>
+        Routines designed around your hair type, lifestyle,
+        environment, and real-world habits — not trends.
+      </p>
+    </div>
+
+    <div class="feature-row">
+      <h4>Texture & Scalp Understanding</h4>
+      <p>
+        Deep insight into curl patterns, density, porosity,
+        and scalp conditions that affect growth and retention.
+      </p>
+    </div>
+
+    <div class="feature-row">
+      <h4>Product Compatibility Guidance</h4>
+      <p>
+        Identify products that work with your hair
+        and avoid ingredients that cause dryness or damage.
+      </p>
+    </div>
+
+    <div class="feature-row">
+      <h4>Cultural Haircare Intelligence</h4>
+      <p>
+        Built with understanding of textured and underserved hair
+        communities, routines, and lived experience.
+      </p>
+    </div>
+
+    <div class="feature-row">
+      <h4>Progress & Results Tracking</h4>
+      <p>
+        Track hair health changes over time and adjust routines
+        as your hair responds and evolves.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+/* Subtle touch feedback for mobile */
+document.querySelectorAll('.feature-row').forEach(row=>{
+  row.addEventListener('touchstart',()=>{
+    row.style.background = 'rgba(212,163,115,0.12)';
+  });
+  row.addEventListener('touchend',()=>{
+    setTimeout(()=>row.style.background='transparent',300);
+  });
+});
+</script>
+
+
+<!-- WHY AI MATTERS : ORAÉ -->
+<section id="ai-orae">
+
+  <style>
+    #ai-orae{
+      padding:140px 8%;
+      background:#1a1411; /* deep charcoal */
+      font-family:Arial, Helvetica, sans-serif;
+      color:#f3e0c8;
+    }
+
+    .ai-wrap{
+      max-width:900px;
+      margin:auto;
+      text-align:center;
+    }
+
+    #ai-orae h3{
+      font-size:42px;
+      margin-bottom:40px;
+      letter-spacing:0.4px;
+      color:#f6e7db;
+    }
+
+    /* DIVIDER */
+    .ai-divider{
+      width:90px;
+      height:3px;
+      margin:0 auto 50px;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        #d4a373,
+        transparent
+      );
+    }
+
+    .ai-wrap p{
+      font-size:19px;
+      line-height:1.9;
+      color:#e9d5c0;
+      margin-bottom:30px;
+    }
+
+    .ai-highlight{
+      margin-top:50px;
+      font-size:20px;
+      font-style:italic;
+      color:#f3e0c8;
+    }
+
+    /* SUBTLE FADE IN */
+    .ai-wrap{
+      opacity:0;
+      transform:translateY(20px);
+      transition:0.8s ease;
+    }
+
+    .ai-wrap.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* MOBILE */
+    @media(max-width:768px){
+      #ai-orae{
+        padding:100px 6%;
+      }
+
+      #ai-orae h3{
+        font-size:32px;
+      }
+
+      .ai-wrap p{
+        font-size:17px;
+      }
+
+      .ai-highlight{
+        font-size:18px;
+      }
+    }
+  </style>
+
+  <div class="ai-wrap">
+
+    <h3>Why AI Matters in Haircare</h3>
+
+    <div class="ai-divider"></div>
+
+    <p>
+      Hair is not static. It changes with environment, health,
+      routine, and time. Yet most haircare advice remains fixed,
+      generic, and disconnected from lived experience.
+    </p>
+
+    <p>
+      ORAÉ uses artificial intelligence to recognise patterns across
+      hair texture, scalp condition, lifestyle, and outcomes.
+      Instead of one-size-fits-all advice, recommendations evolve
+      as the user’s hair responds and grows.
+    </p>
+
+    <p>
+      By learning from real results and professional haircare knowledge,
+      ORAÉ delivers guidance that becomes more accurate, more personal,
+      and more effective over time.
+    </p>
+
+    <div class="ai-highlight">
+      AI allows haircare to become responsive, adaptive,
+      and truly personal.
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+/* Fade-in on scroll */
+const aiSection = document.querySelector('#ai-orae .ai-wrap');
+const aiObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{ threshold:0.3 });
+
+aiObserver.observe(aiSection);
+</script>
+
+
+<!-- CONTACT : ORAÉ SOFT LUXURY (ENHANCED) -->
+<section id="contact-orae-soft">
+
+  <style>
+    #contact-orae-soft{
+      padding:150px 8%;
+      background:#fffaf6;
+      font-family:Arial, Helvetica, sans-serif;
+      color:#2b211c;
+      text-align:center;
+      position:relative;
+    }
+
+    .contact-inner{
+      max-width:760px;
+      margin:auto;
+      opacity:0;
+      transform:translateY(20px);
+      transition:0.9s ease;
+    }
+
+    .contact-inner.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    #contact-orae-soft h3{
+      font-size:42px;
+      margin-bottom:18px;
+      letter-spacing:0.3px;
+      color:#1f1a17;
+    }
+
+    /* SOFT ACCENT LINE */
+    .contact-accent{
+      width:80px;
+      height:3px;
+      margin:22px auto 40px;
+      background:linear-gradient(90deg,#d4a373,#f1d7b8);
+      border-radius:4px;
+    }
+
+    #contact-orae-soft p{
+      font-size:19px;
+      line-height:1.9;
+      color:#4b3a33;
+      margin-bottom:34px;
+    }
+
+    .contact-sub{
+      font-size:18px;
+      line-height:1.8;
+      color:#6b5143;
+      margin-bottom:60px;
+    }
+
+    /* BUTTON */
+    .contact-link{
+      display:inline-block;
+      padding:18px 52px;
+      border-radius:999px;
+      background:#1a1411;
+      color:#f5ebe0;
+      font-size:16.5px;
+      font-weight:600;
+      text-decoration:none;
+      letter-spacing:0.4px;
+      transition:0.35s ease;
+      box-shadow:0 18px 40px rgba(26,20,17,0.28);
+    }
+
+    .contact-link:hover{
+      background:#d4a373;
+      color:#1a1411;
+      box-shadow:0 30px 70px rgba(212,163,115,0.45);
+      transform:translateY(-3px);
+    }
+
+    /* EMAIL TEXT */
+    .contact-email{
+      display:block;
+      margin-top:30px;
+      font-size:15.5px;
+      color:#7a5a48;
+    }
+
+    /* SIGNATURE */
+    ..contact-signature{
+  margin-top:80px;
+}
+{
+      font-size:16px;
+      color:#8a6b58;
+      font-style:italic;
+    }
+
+.contact-footer{
+  margin-top:35px;     /* ↓ much smaller */
+  padding-top:14px;   /* ↓ cleaner */
+  border-top:1px solid rgba(212,163,115,0.4);
+  font-size:12px;
+  color:#7a5a48;
+  letter-spacing:0.3px;
+}
+@media(max-width:768px){
+  #contact-orae-soft{
+    padding:70px 6% 30px;
+  }
+
+  .contact-signature{
+    margin-top:24px;
+  }
+
+  .contact-footer{
+  margin-top:50px;   /* reduced */
+  padding-top:16px; /* reduced */
+}
+
+}
+
+
+    /* MOBILE */
+    @media(max-width:768px){
+      #contact-orae-soft{
+        padding:110px 6%;
+      }
+
+      #contact-orae-soft h3{
+        font-size:32px;
+      }
+
+      #contact-orae-soft p,
+      .contact-sub{
+        font-size:17px;
+      }
+    }
+  </style>
+
+  <div class="contact-inner">
+
+    <h3>Start Your ORAÉ Journey</h3>
+
+    <div class="contact-accent"></div>
+
+    <p>
+      Haircare is more than products it is understanding,
+      patience, and care that evolves with you.
+      ORAÉ exists to support that journey with intelligence
+      and cultural awareness.
+    </p>
+
+    <p class="contact-sub">
+      Whether you’re exploring personalised care, curious about
+      our approach, or ready to begin, we welcome thoughtful
+      conversations not pressure.
+    </p>
+
+    <a
+      class="contact-link"
+      href="mailto:info@oraehealth.co.uk
+      ?subject=ORAÉ%20Haircare%20Enquiry
+      &body=Hello%20ORAÉ%20Team,%0D%0A%0D%0AI’d%20love%20to%20learn%20more%20about%20ORAÉ%20and%20your%20approach%20to%20intelligent,%20inclusive%20haircare.%0D%0A%0D%0AName:%0D%0ALocation:%0D%0AHair%20Concerns%20(Optional):%0D%0A%0D%0AKind%20regards,"
+    >
+      Get in Touch
+    </a>
+
+    <span class="contact-email">
+      or email us directly at <strong>info@oraehealth.co.uk</strong>
+    </span>
+
+    <div class="contact-signature">
+      Thoughtfully built for real hair, real lives.
+    </div>
+
+    <div class="contact-footer">
+      © 2026 ORAÉ Health · United Kingdom · Intelligent Haircare
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+/* Fade-in on scroll */
+const contactSection = document.querySelector('.contact-inner');
+const contactObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{ threshold:0.3 });
+
+contactObserver.observe(contactSection);
+</script>
+</body>
+</html>
