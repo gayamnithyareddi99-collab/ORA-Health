@@ -916,16 +916,18 @@ document.addEventListener("DOMContentLoaded", () => {
       overflow:hidden;
     }
 
-    /* ROUND IMAGE */
-    .how-card img{
-      width:90px;
-      height:90px;
-      object-fit:cover;
-      border-radius:50%;
-      border:3px solid #f5ebe0;
-      margin-bottom:22px;
-      background:#fffaf6;
-    }
+   .how-card img{
+  width:120px;          /* 🔼 bigger */
+  height:120px;         /* 🔼 bigger */
+  object-fit:cover;
+  border-radius:50%;
+  border:4px solid #f5ebe0;
+  margin-bottom:26px;
+  background:#fffaf6;
+  position:relative;
+  z-index:2;
+}
+
 
     .how-card h4{
       font-size:20px;
@@ -939,6 +941,42 @@ document.addEventListener("DOMContentLoaded", () => {
       color:#000000;
       margin:0;
     }
+    /* CIRCLE GLOW EFFECT */
+.how-card::after{
+  content:"";
+  position:absolute;
+  top:38px;
+  left:50%;
+  width:140px;
+  height:140px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(212,163,115,0.55),
+    transparent 65%
+  );
+  opacity:0.4;
+  animation:circlePulse 2.8s ease-in-out infinite;
+  z-index:1;
+}
+
+/* ANIMATION */
+@keyframes circlePulse{
+  0%{
+    opacity:0.25;
+    transform:translateX(-50%) scale(0.95);
+  }
+  50%{
+    opacity:0.65;
+    transform:translateX(-50%) scale(1.05);
+  }
+  100%{
+    opacity:0.25;
+    transform:translateX(-50%) scale(0.95);
+  }
+}
+
 
     /* SOFT GLOW LAYER */
     .how-card::before{
