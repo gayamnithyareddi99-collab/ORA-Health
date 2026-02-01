@@ -73,16 +73,44 @@ nav a{
 }
 
 .hero button{
-  margin-top:30px;
-  padding:14px 38px;
+  margin-top:32px;
+  padding:16px 44px;
   border:none;
   border-radius:999px;
-  background:var(--dark);
-  color:#fff;
-  font-weight:bold;
+  background:linear-gradient(135deg,#0f172a,#020617);
+  color:#ffffff;
+  font-size:15.5px;
+  font-weight:600;
+  letter-spacing:0.5px;
   cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  box-shadow:
+    0 18px 40px rgba(2,6,23,0.45);
 }
-
+.hero button::after{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-150%;
+  width:50%;
+  height:100%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(212,163,115,0.8),
+    transparent
+  );
+  animation:travelLight 1.5s ease-in-out infinite;
+}
+.hero button:hover::after{
+  transform:translateX(120%);
+}
+.hero button:hover{
+  transform:translateY(-4px);
+  box-shadow:
+    0 30px 70px rgba(212,163,115,0.55);
+}
 /* HERO IMAGE */
 .hero img{
   width:100%;
@@ -296,28 +324,143 @@ footer{
     display:flex;
   }
 }
+/* ======================
+   HERO IMAGE – ORAÉ LUXURY AI EFFECT
+   ====================== */
 
+.hero-image-wrap{
+  position:relative;
+  border-radius:28px;
+  padding:6px;
+  background:linear-gradient(
+    135deg,
+    rgba(212,163,115,0.55),
+    rgba(245,235,224,0.9)
+  );
+  animation:aiGlow 6s ease-in-out infinite;
+}
+
+/* IMAGE ITSELF */
+.hero-image-wrap img{
+  width:100%;
+  border-radius:24px;
+  display:block;
+  background:#fffaf6;
+  transition:0.6s ease;
+  box-shadow:
+    0 25px 55px rgba(0,0,0,0.25),
+    inset 0 0 0 rgba(212,163,115,0);
+}
+
+/* SOFT LIGHT HALO */
+.hero-image-wrap::after{
+  content:"";
+  position:absolute;
+  inset:-18px;
+  background:radial-gradient(
+    circle,
+    rgba(212,163,115,0.35),
+    transparent 70%
+  );
+  opacity:0.6;
+  z-index:-1;
+  animation:haloPulse 6s ease-in-out infinite;
+}
+
+/* HOVER / TOUCH INTERACTION */
+.hero-image-wrap:hover img{
+  transform:translateY(-6px) scale(1.01);
+  box-shadow:
+    0 35px 75px rgba(0,0,0,0.35),
+    0 0 40px rgba(212,163,115,0.55);
+}
+
+/* MICRO VIBRATION (VERY SOFT) */
+.hero-image-wrap:hover{
+  animation:vibe 0.6s ease-in-out;
+}
+
+/* ======================
+   ANIMATIONS
+   ====================== */
+
+@keyframes aiGlow{
+  0%,100%{
+    filter:brightness(1);
+  }
+  50%{
+    filter:brightness(1.05);
+  }
+}
+@keyframes travelLight{
+  0%{
+    left:-150%;
+  }
+  50%{
+    left:150%;
+  }
+  100%{
+    left:150%;
+  }
+}
+@keyframes haloPulse{
+  0%,100%{opacity:0.4;}
+  50%{opacity:0.75;}
+}
+
+@keyframes vibe{
+  0%{transform:translateX(0);}
+  25%{transform:translateX(-1px);}
+  50%{transform:translateX(1px);}
+  75%{transform:translateX(-1px);}
+  100%{transform:translateX(0);}
+}
+.hero button:active{
+  transform:translateY(-1px) scale(0.98);
+}
 </style>
-<script>
-/* TOGGLE MOBILE MENU */
-const toggle = document.getElementById("navToggle");
-const menu = document.getElementById("navMenu");
+    <script>
+const heroImage = document.querySelector('.hero-image-wrap');
 
-toggle.addEventListener("click", ()=>{
-  menu.classList.toggle("show");
-});
-
-/* SMOOTH SCROLL + CLOSE MENU */
-document.querySelectorAll(".nav-menu a").forEach(link=>{
-  link.addEventListener("click", e=>{
-    e.preventDefault();
-    menu.classList.remove("show");
-
-    const target = document.querySelector(link.getAttribute("href"));
-    target.scrollIntoView({ behavior:"smooth" });
+const heroObserver = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      heroImage.style.filter = "brightness(1.05)";
+    }else{
+      heroImage.style.filter = "brightness(1)";
+    }
   });
+},{ threshold:0.4 });
+
+heroObserver.observe(heroImage);
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const toggle = document.getElementById("navToggle");
+  const menu = document.getElementById("navMenu");
+
+  if(toggle && menu){
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("show");
+    });
+
+    document.querySelectorAll(".nav-menu a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        menu.classList.remove("show");
+
+        const target = document.querySelector(link.getAttribute("href"));
+        if(target){
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  }
+
 });
 </script>
+
 
 </head>
 
@@ -356,10 +499,15 @@ document.querySelectorAll(".nav-menu a").forEach(link=>{
       AI, cultural insight, and professional expertise to deliver
       personalised hair solutions for textured hair.
     </p>
-    <button>Request Early Access</button>
+    <button id="earlyAccessBtn">Request Early Access</button>
+
   </div>
 
+  <div class="hero-image-wrap">
   <img src="orae.jpeg" alt="Healthy hair">
+  
+</div>
+
 </section>
 
 <!-- ABOUT ORAÉ -->
@@ -976,14 +1124,17 @@ aiObserver.observe(aiSection);
 <section id="contact-orae-soft">
 
   <style>
-    #contact-orae-soft{
-      padding:150px 8%;
-      background:#fffaf6;
-      font-family:Arial, Helvetica, sans-serif;
-      color:#2b211c;
-      text-align:center;
-      position:relative;
-    }
+   #contact-orae-soft{
+  padding:90px 8% 40px;
+  background:
+    radial-gradient(circle at top, rgba(212,163,115,0.25), transparent 60%),
+    linear-gradient(180deg, #fffaf6, #f5ebe0);
+  font-family:Arial, Helvetica, sans-serif;
+  color:#2b211c;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
 
     .contact-inner{
       max-width:760px;
@@ -1058,19 +1209,15 @@ aiObserver.observe(aiSection);
       color:#7a5a48;
     }
 
-    /* SIGNATURE */
-    ..contact-signature{
-  margin-top:80px;
+.contact-signature{
+  margin-top:30px;
+  font-size:16px;
+  color:#8a6b58;
+  font-style:italic;
 }
-{
-      font-size:16px;
-      color:#8a6b58;
-      font-style:italic;
-    }
-
 .contact-footer{
-  margin-top:35px;     /* ↓ much smaller */
-  padding-top:14px;   /* ↓ cleaner */
+  margin-top:20px;     /* ↓ much smaller */
+  padding-top:10px;   /* ↓ cleaner */
   border-top:1px solid rgba(212,163,115,0.4);
   font-size:12px;
   color:#7a5a48;
@@ -1165,7 +1312,19 @@ const contactObserver = new IntersectionObserver(entries=>{
   });
 },{ threshold:0.3 });
 
+
 contactObserver.observe(contactSection);
 </script>
+<script>
+document.getElementById("earlyAccessBtn").addEventListener("click", () => {
+  const contactSection = document.getElementById("contact-orae-soft");
+  if(contactSection){
+    contactSection.scrollIntoView({ behavior: "smooth" });
+  }
+});
+</script>
+
+</body>
+</html>
 </body>
 </html>
