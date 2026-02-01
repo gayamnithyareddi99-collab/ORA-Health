@@ -881,7 +881,7 @@ document.addEventListener("DOMContentLoaded", () => {
   <style>
     #how-orae{
       padding:120px 8%;
-      background:#614b44; /* deep skin-dark background */
+      background:#614b44;
       font-family:Arial, Helvetica, sans-serif;
       color:#f5e9dc;
     }
@@ -899,61 +899,63 @@ document.addEventListener("DOMContentLoaded", () => {
       max-width:1200px;
       margin:auto;
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:40px;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:50px;
     }
 
     /* CARD */
     .how-card{
-      background:#f5ebe0; /* skin dark brown */
+      background:#f5ebe0;
       border-radius:28px;
-      padding:38px 30px 42px;
+      padding:42px 30px 46px;
       text-align:center;
       position:relative;
-      border:1px solid rgba(212, 163, 115, 0.25);
+      border:1px solid rgba(212,163,115,0.3);
       transition:0.45s ease;
-      cursor:pointer;
       overflow:hidden;
     }
 
-.how-card img{
-  width:240px;          /* 🚀 ULTRA BIG */
-  height:240px;         /* 🚀 ULTRA BIG */
-  object-fit:cover;
-  border-radius:50%;
-  border:7px solid #f5ebe0;
-  margin-bottom:42px;
-  background:#fffaf6;
-  position:relative;
-  z-index:2;
+    /* IMAGE BOX (RECTANGLE) */
+    .how-card img{
+      width:100%;
+      max-width:280px;
+      height:180px;
+      object-fit:cover;
+      border-radius:18px;   /* 🔲 box shape */
+      border:4px solid #f5ebe0;
+      margin-bottom:32px;
+      background:#fffaf6;
+      position:relative;
+      z-index:2;
 
-  box-shadow:
-    0 0 0 14px rgba(212,163,115,0.22),
-    0 0 70px rgba(212,163,115,0.75);
+      box-shadow:
+        0 0 0 10px rgba(212,163,115,0.18),
+        0 0 55px rgba(212,163,115,0.65);
 
-  animation: imageFlash 2.2s ease-in-out infinite;
-}
-@keyframes imageFlash{
-  0%{
-    box-shadow:
-      0 0 0 8px rgba(212,163,115,0.15),
-      0 0 30px rgba(212,163,115,0.35);
-    transform:scale(0.96);
-  }
-  50%{
-    box-shadow:
-      0 0 0 16px rgba(212,163,115,0.45),
-      0 0 90px rgba(212,163,115,0.9);
-    transform:scale(1.06);
-  }
-  100%{
-    box-shadow:
-      0 0 0 8px rgba(212,163,115,0.15),
-      0 0 30px rgba(212,163,115,0.35);
-    transform:scale(0.96);
-  }
-}
+      animation:imageFlash 2.6s ease-in-out infinite;
+    }
 
+    /* IMAGE FLASH ANIMATION */
+    @keyframes imageFlash{
+      0%{
+        box-shadow:
+          0 0 0 6px rgba(212,163,115,0.15),
+          0 0 25px rgba(212,163,115,0.35);
+        transform:scale(0.97);
+      }
+      50%{
+        box-shadow:
+          0 0 0 14px rgba(212,163,115,0.45),
+          0 0 80px rgba(212,163,115,0.9);
+        transform:scale(1.05);
+      }
+      100%{
+        box-shadow:
+          0 0 0 6px rgba(212,163,115,0.15),
+          0 0 25px rgba(212,163,115,0.35);
+        transform:scale(0.97);
+      }
+    }
 
     .how-card h4{
       font-size:20px;
@@ -964,104 +966,22 @@ document.addEventListener("DOMContentLoaded", () => {
     .how-card p{
       font-size:16px;
       line-height:1.7;
-      color:#000000;
+      color:#000;
       margin:0;
     }
-    @keyframes imageFlash{
-  0%{
-    box-shadow:
-      0 0 0 6px rgba(212,163,115,0.12),
-      0 0 20px rgba(212,163,115,0.25);
-  }
-  50%{
-    box-shadow:
-      0 0 0 12px rgba(212,163,115,0.35),
-      0 0 60px rgba(212,163,115,0.75);
-  }
-  100%{
-    box-shadow:
-      0 0 0 6px rgba(212,163,115,0.12),
-      0 0 20px rgba(212,163,115,0.25);
-  }
-}
 
-    /* CIRCLE GLOW EFFECT */
-.how-card::after{
-  content:"";
-  position:absolute;
-  top:38px;
-  left:50%;
-  width:140px;
-  height:140px;
-  transform:translateX(-50%);
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(212,163,115,0.55),
-    transparent 65%
-  );
-  opacity:0.4;
-  animation:circlePulse 2.8s ease-in-out infinite;
-  z-index:1;
-}
-
-/* ANIMATION */
-@keyframes circlePulse{
-  0%{
-    opacity:0.25;
-    transform:translateX(-50%) scale(0.95);
-  }
-  50%{
-    opacity:0.65;
-    transform:translateX(-50%) scale(1.05);
-  }
-  100%{
-    opacity:0.25;
-    transform:translateX(-50%) scale(0.95);
-  }
-}
-
-
-    /* SOFT GLOW LAYER */
-    .how-card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:radial-gradient(
-        circle at top,
-        rgba(204, 160, 117, 0.35),
-        transparent 70%
-      );
-      opacity:0;
-      transition:0.45s ease;
+    /* HOVER EFFECT */
+    .how-card:hover{
+      background:#1a1411;
+      transform:translateY(-10px);
+      box-shadow:
+        0 28px 60px rgba(0,0,0,0.65),
+        0 0 40px rgba(212,163,115,0.55);
+      border-color:#d4a373;
     }
 
-  /* HOVER / TOUCH EFFECT – ORAÉ PREMIUM */
-.how-card:hover{
-  background:#1a1411; /* deep charcoal brown */
-  transform:translateY(-10px);
-  box-shadow:
-    0 28px 60px rgba(0,0,0,0.65),
-    0 0 40px rgba(212,163,115,0.55); /* warm skin glow */
-  border-color:#d4a373;
-}
-
-
-    .how-card:hover::before{
-      opacity:1;
-    }
-
- .how-card:hover h4{
-  color:#f3e0c8; /* warm cream */
-}
-
-.how-card:hover p{
-  color:#e9d5c0;
-}
-.how-card:hover img{
-  border-color:#d4a373;
-  box-shadow:0 0 20px rgba(212,163,115,0.6);
-}
+    .how-card:hover h4{ color:#f3e0c8; }
+    .how-card:hover p{ color:#e9d5c0; }
 
     /* MOBILE */
     @media(max-width:768px){
@@ -1071,6 +991,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       #how-orae h3{
         font-size:32px;
+      }
+
+      .how-card img{
+        height:160px;
       }
     }
   </style>
@@ -1126,20 +1050,19 @@ document.addEventListener("DOMContentLoaded", () => {
       <h4>8. Long-Term Care</h4>
       <p>ORAÉ evolves with your hair as seasons and needs change.</p>
     </div>
-    <div class="how-card">
-  <img src="90.jpeg" alt="Community & education">
-  <h4>9. Education & Empowerment</h4>
-  <p>
-    Learn healthy hair practices, avoid damage myths,
-    and build long-term confidence through guided care.
-  </p>
-</div>
 
+    <div class="how-card">
+      <img src="90.jpeg" alt="Community & education">
+      <h4>9. Education & Empowerment</h4>
+      <p>
+        Learn healthy hair practices, avoid damage myths,
+        and build long-term confidence through guided care.
+      </p>
+    </div>
 
   </div>
 
 </section>
-
 <script>
 /* OPTIONAL: touch support for mobile */
 document.querySelectorAll('.how-card').forEach(card=>{
