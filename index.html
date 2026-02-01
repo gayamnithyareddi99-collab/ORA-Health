@@ -23,31 +23,88 @@ body{
   line-height:1.7;
 }
 
-/* NAV */
-nav{
+//* ===== NAVBAR (WORKING) ===== */
+.orae-nav{
   position:fixed;
-  top:0;left:0;right:0;
+  top:0;
+  left:0;
+  right:0;
+  height:70px;
+  padding:0 8%;
   background:#ffffff;
-  padding:16px 8%;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   border-bottom:1px solid #eee;
-  z-index:999;
+  z-index:9999;
 }
 
-nav h1{
-  font-size:20px;
-  color:var(--dark);
-  letter-spacing:1px;
+.nav-logo{
+  font-size:18px;
+  font-weight:700;
+  color:#1a1411;
 }
 
-nav a{
+.nav-menu{
+  list-style:none;
+  display:flex;
+  gap:28px;
+}
+
+.nav-menu a{
   text-decoration:none;
-  color:var(--dark);
+  color:#1a1411;
   font-weight:600;
-  margin-left:24px;
 }
+
+/* HAMBURGER */
+.nav-toggle{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+}
+
+.nav-toggle span{
+  width:26px;
+  height:3px;
+  background:#1a1411;
+  margin:4px 0;
+  border-radius:3px;
+}
+
+/* MOBILE */
+@media (max-width:900px){
+  .nav-toggle{
+    display:flex;   /* ✅ 3 LINES SHOW HERE */
+  }
+
+  .nav-menu{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#fff;
+    flex-direction:column;
+    align-items:center;
+    display:none;
+  }
+
+  .nav-menu.show{
+    display:flex;
+  }
+
+  .nav-menu li{
+    width:100%;
+    text-align:center;
+    border-top:1px solid #eee;
+  }
+
+  .nav-menu a{
+    padding:16px 0;
+    display:block;
+  }
+}
+
 
 /* HERO */
 .hero{
@@ -176,7 +233,7 @@ nav a{
   .nav-menu.show{
     display:flex;
   }
-}
+
 
 
 /* SECTION BASE */
@@ -376,13 +433,13 @@ footer{
   inset: -3px;
   border-radius: 30px;
   background: conic-gradient(
-    rgba(15, 15, 15, 0) 0deg,
+    rgba(212, 15, 15, 0) 0deg,
     rgba(240, 148, 57, 0) 40deg,
     rgba(212,163,115,0.9) 90deg,
-    rgba(212,163,115,0) 140deg,
-    rgba(212,163,115,0) 360deg
+    rgba(255, 128, 0, 0) 140deg,
+    rgba(211, 126, 42, 0) 360deg
   );
-  animation: borderMove 3.5s linear infinite;
+  animation: borderMove 1.5s linear infinite;
   z-index: 1;
 }
 
@@ -521,6 +578,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+  </script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.getElementById("navToggle");
@@ -537,6 +595,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
+
+
+
 
 
 });
