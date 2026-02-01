@@ -121,14 +121,29 @@ nav a{
    MOBILE NAV FIX
    ====================== */
 
-@media (max-width: 900px){
+/* HAMBURGER ICON */
+.nav-toggle{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  cursor:pointer;
+}
 
-  /* SHOW HAMBURGER */
+.nav-toggle span{
+  width:26px;
+  height:3px;
+  background:#1a1411;
+  margin:4px 0;
+  border-radius:3px;
+  transition:0.3s ease;
+}
+
+/* SHOW ONLY ON MOBILE */
+@media (max-width:900px){
   .nav-toggle{
     display:flex;
   }
 
-  /* MOBILE MENU */
   .nav-menu{
     position:absolute;
     top:70px;
@@ -137,21 +152,25 @@ nav a{
     background:#ffffff;
     flex-direction:column;
     align-items:center;
-    gap:0;
     display:none;
     border-bottom:1px solid #eee;
+  }
+
+  .nav-menu.show{
+    display:flex;
   }
 
   .nav-menu li{
     width:100%;
     text-align:center;
-    border-top:1px solid #f0f0f0;
+    border-top:1px solid #f1f1f1;
   }
 
   .nav-menu li a{
-    display:block;
     padding:16px 0;
+    display:block;
   }
+}
 
   /* WHEN TOGGLED */
   .nav-menu.show{
@@ -502,12 +521,23 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-const toggle = document.getElementById("navToggle");
-const menu = document.getElementById("navMenu");
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("navToggle");
+  const menu = document.getElementById("navMenu");
 
-toggle.addEventListener("click", () => {
-  menu.classList.toggle("show");
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("show");
+  });
+
+  document.querySelectorAll(".nav-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("show");
+    });
+  });
 });
+</script>
+
 
 });
 </script>
