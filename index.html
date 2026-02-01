@@ -77,7 +77,7 @@ nav a{
   padding:16px 44px;
   border:none;
   border-radius:999px;
-  background:linear-gradient(135deg,#0f172a,#020617);
+  background:linear-gradient(135deg,#0f172a,#d4a373);
   color:#ffffff;
   font-size:15.5px;
   font-weight:600;
@@ -325,60 +325,82 @@ footer{
   }
 }
 /* ======================
-   HERO IMAGE – ORAÉ LUXURY AI EFFECT
+   CONTINUOUS TRAVELLING LIGHT – HERO IMAGE
    ====================== */
 
 .hero-image-wrap{
   position:relative;
   border-radius:28px;
   padding:6px;
-  background:linear-gradient(
-    135deg,
-    rgba(212,163,115,0.55),
-    rgba(245,235,224,0.9)
-  );
-  animation:aiGlow 6s ease-in-out infinite;
+  overflow:hidden;
+  background:#020617;
 }
 
-/* IMAGE ITSELF */
+/* IMAGE */
 .hero-image-wrap img{
   width:100%;
   border-radius:24px;
   display:block;
-  background:#fffaf6;
-  transition:0.6s ease;
+  position:relative;
+  z-index:2;
   box-shadow:
-    0 25px 55px rgba(0,0,0,0.25),
-    inset 0 0 0 rgba(212,163,115,0);
+    0 30px 70px rgba(0,0,0,0.45);
 }
 
-/* SOFT LIGHT HALO */
+/* MOVING LIGHT OVERLAY */
+.hero-image-wrap::before{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-120%;
+  width:60%;
+  height:200%;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(212,163,115,0.45),
+    transparent
+  );
+  transform:rotate(18deg);
+  animation:travelLightHero 4s linear infinite;
+  z-index:3;
+}
+
+/* DARK AI GLOW */
 .hero-image-wrap::after{
   content:"";
   position:absolute;
-  inset:-18px;
+  inset:-20px;
   background:radial-gradient(
     circle,
     rgba(212,163,115,0.35),
     transparent 70%
   );
-  opacity:0.6;
-  z-index:-1;
-  animation:haloPulse 6s ease-in-out infinite;
+  opacity:0.55;
+  z-index:1;
+  animation:aiPulse 6s ease-in-out infinite;
 }
 
-/* HOVER / TOUCH INTERACTION */
-.hero-image-wrap:hover img{
-  transform:translateY(-6px) scale(1.01);
-  box-shadow:
-    0 35px 75px rgba(0,0,0,0.35),
-    0 0 40px rgba(212,163,115,0.55);
+/* ======================
+   ANIMATIONS
+   ====================== */
+
+@keyframes travelLightHero{
+  0%{
+    left:-120%;
+  }
+  100%{
+    left:160%;
+  }
 }
 
-/* MICRO VIBRATION (VERY SOFT) */
-.hero-image-wrap:hover{
-  animation:vibe 0.6s ease-in-out;
+@keyframes aiPulse{
+  0%,100%{opacity:0.4;}
+  50%{opacity:0.75;}
 }
+
+
+
 
 /* ======================
    ANIMATIONS
