@@ -916,24 +916,43 @@ document.addEventListener("DOMContentLoaded", () => {
       overflow:hidden;
     }
 
- .how-card img{
-  width:200px;          /* 🔥 EXTRA BIG */
-  height:200px;         /* 🔥 EXTRA BIG */
+.how-card img{
+  width:240px;          /* 🚀 ULTRA BIG */
+  height:240px;         /* 🚀 ULTRA BIG */
   object-fit:cover;
   border-radius:50%;
-  border:6px solid #f5ebe0;
-  margin-bottom:36px;
+  border:7px solid #f5ebe0;
+  margin-bottom:42px;
   background:#fffaf6;
   position:relative;
   z-index:2;
+
   box-shadow:
-  0 0 0 10px rgba(212,163,115,0.18),
-  0 0 45px rgba(212,163,115,0.55);
+    0 0 0 14px rgba(212,163,115,0.22),
+    0 0 70px rgba(212,163,115,0.75);
 
-animation: imageFlash 2.6s ease-in-out infinite;
-
-
- }
+  animation: imageFlash 2.2s ease-in-out infinite;
+}
+@keyframes imageFlash{
+  0%{
+    box-shadow:
+      0 0 0 8px rgba(212,163,115,0.15),
+      0 0 30px rgba(212,163,115,0.35);
+    transform:scale(0.96);
+  }
+  50%{
+    box-shadow:
+      0 0 0 16px rgba(212,163,115,0.45),
+      0 0 90px rgba(212,163,115,0.9);
+    transform:scale(1.06);
+  }
+  100%{
+    box-shadow:
+      0 0 0 8px rgba(212,163,115,0.15),
+      0 0 30px rgba(212,163,115,0.35);
+    transform:scale(0.96);
+  }
+}
 
 
     .how-card h4{
