@@ -117,6 +117,48 @@ nav a{
   border-radius:24px;
   box-shadow:0 30px 60px rgba(0,0,0,0.2);
 }
+/* ======================
+   MOBILE NAV FIX
+   ====================== */
+
+@media (max-width: 900px){
+
+  /* SHOW HAMBURGER */
+  .nav-toggle{
+    display:flex;
+  }
+
+  /* MOBILE MENU */
+  .nav-menu{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:#ffffff;
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+    display:none;
+    border-bottom:1px solid #eee;
+  }
+
+  .nav-menu li{
+    width:100%;
+    text-align:center;
+    border-top:1px solid #f0f0f0;
+  }
+
+  .nav-menu li a{
+    display:block;
+    padding:16px 0;
+  }
+
+  /* WHEN TOGGLED */
+  .nav-menu.show{
+    display:flex;
+  }
+}
+
 
 /* SECTION BASE */
 section{
@@ -460,6 +502,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+const toggle = document.getElementById("navToggle");
+const menu = document.getElementById("navMenu");
+
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("show");
+});
 
 });
 </script>
@@ -763,54 +811,54 @@ document.addEventListener("DOMContentLoaded", () => {
   <div class="how-grid">
 
     <div class="how-card">
-      <img src="10.jpeg" alt="Hair analysis">
+      <img src="image-1.jpg" alt="Hair analysis">
       <h4>1. Hair Analysis</h4>
       <p>Users share hair type, concerns, and lifestyle inputs.</p>
     </div>
 
     <div class="how-card">
-      <img src="20.jpeg" alt="Texture scan">
+      <img src="image-2.jpg" alt="Texture scan">
       <h4>2. Texture Understanding</h4>
       <p>AI understands curl pattern, density, and strand behaviour.</p>
     </div>
 
     <div class="how-card">
-      <img src="03.jpeg" alt="Health assessment">
+      <img src="image-3.jpg" alt="Health assessment">
       <h4>3. Health Assessment</h4>
       <p>Scalp health, breakage risk, and damage signals identified.</p>
     </div>
 
     <div class="how-card">
-      <img src="40.jpg" alt="AI processing">
+      <img src="image-4.jpg" alt="AI processing">
       <h4>4. AI Intelligence</h4>
       <p>Models process data using salon-backed hair science.</p>
     </div>
 
     <div class="how-card">
-      <img src="50.jpeg" alt="Personal routine">
+      <img src="image-5.jpg" alt="Personal routine">
       <h4>5. Personal Routine</h4>
       <p>Custom routines designed for real hair and real life.</p>
     </div>
 
     <div class="how-card">
-      <img src="60.jpeg" alt="Product guidance">
+      <img src="image-6.jpg" alt="Product guidance">
       <h4>6. Product Guidance</h4>
       <p>Evidence-based product recommendations without guesswork.</p>
     </div>
 
     <div class="how-card">
-      <img src="70.jpeg" alt="Progress tracking">
+      <img src="image-7.jpg" alt="Progress tracking">
       <h4>7. Progress Tracking</h4>
       <p>Track improvements and adjust routines over time.</p>
     </div>
 
     <div class="how-card">
-      <img src="80.jpeg" alt="Long term care">
+      <img src="image-8.jpg" alt="Long term care">
       <h4>8. Long-Term Care</h4>
       <p>ORAÉ evolves with your hair as seasons and needs change.</p>
     </div>
     <div class="how-card">
-  <img src="90.jpeg" alt="Community & education">
+  <img src="image-9.jpg" alt="Community & education">
   <h4>9. Education & Empowerment</h4>
   <p>
     Learn healthy hair practices, avoid damage myths,
