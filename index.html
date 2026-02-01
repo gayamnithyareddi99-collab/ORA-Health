@@ -286,100 +286,81 @@ footer{
   margin:4px 0;
   border-radius:2px;
 }
-
-/* ======================
-   MOBILE
-   ====================== */
-@media(max-width:900px){
-
-  .nav-toggle{
-    display:flex;
-  }
-
-  .nav-menu{
-    position:absolute;
-    top:70px;
-    left:0;
-    width:100%;
-    background:#ffffff;
-    flex-direction:column;
-    align-items:center;
-    gap:0;
-    display:none;
-    border-bottom:1px solid #eee;
-  }
-
-  .nav-menu li{
-    width:100%;
-    text-align:center;
-    border-top:1px solid #f0f0f0;
-  }
-
-  .nav-menu li a{
-    display:block;
-    padding:16px 0;
-  }
-
-  .nav-menu.show{
-    display:flex;
-  }
-}
-/* ======================
-   CONTINUOUS TRAVELLING LIGHT – HERO IMAGE
-   ====================== */
+/* ===============================
+   HERO IMAGE – TRAVELLING LIGHT BORDER
+   =============================== */
 
 .hero-image-wrap{
-  position:relative;
-  border-radius:28px;
-  padding:6px;
-  overflow:hidden;
-  background:#020617;
+  position: relative;
+  border-radius: 28px;
+  padding: 4px;
+  background: #020617; /* dark base */
+  overflow: hidden;
 }
 
 /* IMAGE */
 .hero-image-wrap img{
-  width:100%;
-  border-radius:24px;
-  display:block;
-  position:relative;
-  z-index:2;
-  box-shadow:
-    0 30px 70px rgba(0,0,0,0.45);
+  width: 100%;
+  display: block;
+  border-radius: 24px;
+  background: #0b0f1a;
+  position: relative;
+  z-index: 2;
 }
 
-/* MOVING LIGHT OVERLAY */
+/* MOVING LIGHT */
 .hero-image-wrap::before{
-  content:"";
-  position:absolute;
-  top:-50%;
-  left:-120%;
-  width:60%;
-  height:200%;
-  background:linear-gradient(
-    120deg,
-    transparent,
-    rgba(212,163,115,0.45),
-    transparent
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 30px;
+  background: conic-gradient(
+    rgba(15, 15, 15, 0) 0deg,
+    rgba(240, 148, 57, 0) 40deg,
+    rgba(212,163,115,0.9) 90deg,
+    rgba(212,163,115,0) 140deg,
+    rgba(212,163,115,0) 360deg
   );
-  transform:rotate(18deg);
-  animation:travelLightHero 4s linear infinite;
-  z-index:3;
+  animation: borderMove 3.5s linear infinite;
+  z-index: 1;
 }
 
-/* DARK AI GLOW */
+/* SOFT GLOW */
 .hero-image-wrap::after{
   content:"";
   position:absolute;
-  inset:-20px;
+  inset:-18px;
+  border-radius:40px;
   background:radial-gradient(
     circle,
     rgba(212,163,115,0.35),
     transparent 70%
   );
-  opacity:0.55;
-  z-index:1;
-  animation:aiPulse 6s ease-in-out infinite;
+  z-index:0;
 }
+
+/* ANIMATION */
+@keyframes borderMove{
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+/* ======================
+   ANIMATIONS
+   ====================== */
+
+@keyframes travelBorder{
+  100%{
+    transform:rotate(360deg);
+  }
+}
+
+@keyframes pulseGlow{
+  0%,100%{opacity:0.35;}
+  50%{opacity:0.65;}
+}
+
 
 /* ======================
    ANIMATIONS
@@ -782,54 +763,54 @@ document.addEventListener("DOMContentLoaded", () => {
   <div class="how-grid">
 
     <div class="how-card">
-      <img src="image-1.jpg" alt="Hair analysis">
+      <img src="10.jpeg" alt="Hair analysis">
       <h4>1. Hair Analysis</h4>
       <p>Users share hair type, concerns, and lifestyle inputs.</p>
     </div>
 
     <div class="how-card">
-      <img src="image-2.jpg" alt="Texture scan">
+      <img src="20.jpeg" alt="Texture scan">
       <h4>2. Texture Understanding</h4>
       <p>AI understands curl pattern, density, and strand behaviour.</p>
     </div>
 
     <div class="how-card">
-      <img src="image-3.jpg" alt="Health assessment">
+      <img src="03.jpeg" alt="Health assessment">
       <h4>3. Health Assessment</h4>
       <p>Scalp health, breakage risk, and damage signals identified.</p>
     </div>
 
     <div class="how-card">
-      <img src="image-4.jpg" alt="AI processing">
+      <img src="40.jpg" alt="AI processing">
       <h4>4. AI Intelligence</h4>
       <p>Models process data using salon-backed hair science.</p>
     </div>
 
     <div class="how-card">
-      <img src="image-5.jpg" alt="Personal routine">
+      <img src="50.jpeg" alt="Personal routine">
       <h4>5. Personal Routine</h4>
       <p>Custom routines designed for real hair and real life.</p>
     </div>
 
     <div class="how-card">
-      <img src="image-6.jpg" alt="Product guidance">
+      <img src="60.jpeg" alt="Product guidance">
       <h4>6. Product Guidance</h4>
       <p>Evidence-based product recommendations without guesswork.</p>
     </div>
 
     <div class="how-card">
-      <img src="image-7.jpg" alt="Progress tracking">
+      <img src="70.jpeg" alt="Progress tracking">
       <h4>7. Progress Tracking</h4>
       <p>Track improvements and adjust routines over time.</p>
     </div>
 
     <div class="how-card">
-      <img src="image-8.jpg" alt="Long term care">
+      <img src="80.jpeg" alt="Long term care">
       <h4>8. Long-Term Care</h4>
       <p>ORAÉ evolves with your hair as seasons and needs change.</p>
     </div>
     <div class="how-card">
-  <img src="image-9.jpg" alt="Community & education">
+  <img src="90.jpeg" alt="Community & education">
   <h4>9. Education & Empowerment</h4>
   <p>
     Learn healthy hair practices, avoid damage myths,
@@ -882,7 +863,7 @@ document.querySelectorAll('.how-card').forEach(card=>{
     /* FEATURE ROW */
     .feature-row{
       padding:34px 0;
-      border-bottom:1px solid rgba(212,163,115,0.35);
+      border-bottom:1px solid rgba(44, 25, 5, 0.35);
       transition:0.35s ease;
       cursor:pointer;
     }
@@ -895,7 +876,7 @@ document.querySelectorAll('.how-card').forEach(card=>{
       font-size:22px;
       margin-bottom:10px;
       font-weight:600;
-      color:#1a1411;
+      color:#3a2c26;
     }
 
     .feature-row p{
@@ -917,7 +898,7 @@ document.querySelectorAll('.how-card').forEach(card=>{
     }
 
     .feature-row:hover h4{
-      color:#7a4a2f;
+      color:#6d3717;
     }
 
     /* MOBILE */
@@ -941,7 +922,7 @@ document.querySelectorAll('.how-card').forEach(card=>{
     }
   </style>
 
-  <h3>Platform Features</h3>
+  <h3>ORAÉ Works Features</h3>
 
   <div class="features-wrap">
 
@@ -957,7 +938,7 @@ document.querySelectorAll('.how-card').forEach(card=>{
       <h4>Personalised Routine Intelligence</h4>
       <p>
         Routines designed around your hair type, lifestyle,
-        environment, and real-world habits — not trends.
+        environment, and real-world habits not trends.
       </p>
     </div>
 
@@ -1300,7 +1281,7 @@ aiObserver.observe(aiSection);
 
     <a
       class="contact-link"
-      href="mailto:info@oraehealth.co.uk
+      href="mailto:oraehealth@gmail.com
       ?subject=ORAÉ%20Haircare%20Enquiry
       &body=Hello%20ORAÉ%20Team,%0D%0A%0D%0AI’d%20love%20to%20learn%20more%20about%20ORAÉ%20and%20your%20approach%20to%20intelligent,%20inclusive%20haircare.%0D%0A%0D%0AName:%0D%0ALocation:%0D%0AHair%20Concerns%20(Optional):%0D%0A%0D%0AKind%20regards,"
     >
@@ -1308,7 +1289,7 @@ aiObserver.observe(aiSection);
     </a>
 
     <span class="contact-email">
-      or email us directly at <strong>info@oraehealth.co.uk</strong>
+      or email us directly at <strong>oraehealth@gmail.com</strong>
     </span>
 
     <div class="contact-signature">
